@@ -1,151 +1,67 @@
-#include<stdio.h>
-#include<stdlib.h> //system("cls") ÇÔ¼ö
-#include<Windows.h> //Sleep ÇÔ¼ö
-#include<conio.h> //getch() ÇÔ¼ö
-#include<time.h>
-#include<process.h> //thread ÇÔ¼ö
+#include"Arrow_Game.h"
 
-int l=0;
+void print_arrow(int *arrow){
+	int i = 0, n = 0;
+  short key[4] = { 72,75,77,80 };
 
-int menu(void);
-void play(void);
-void gotoxy(int x, int y);
-unsigned int WINAPI ThreadFunction(void *arg);
-
-int main(void)
-{
-	int m=0;
-
-	while (1)
-	{
-		if (m == 1)
-			play();
-		else if (m == 2)
-			break;
-
-		system("cls");
-		m = menu();
-	}
-	return 0;
-}
-
-int menu(void)
-{
-	int m;
-
-	system("cls");
-	printf("1. Play 2. Exit\nSelect: ");
-	scanf("%d", &m);
-
-	return m;
-}
-
-void play(void)
-{
-	int i=0;
-	char c = 0,n=0,m=0;
-	int ac[50] = { 0 };
-	short key[4] = { 72, 75,77,80 };
-	HANDLE hThread = NULL;
-	DWORD dwThreadID = NULL;
-
-	system("cls");
-	//¹è¿­¿¡ ¼ýÀÚ ³Ö±â
+  system("clear");
+  srand(time(NULL));
 	for (i = 0; i < 50; i++)
 	{
-		ac[i] = key[(rand() % 4)];
+		arrow[i] = key[(rand() % 4)];
 	}
 
-	printf("\n Å¸ÀÏÀÇ °³¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.(MAX 50) : ");
+	printf("\n Input Max tile(MAX 50) : ");
 	scanf("%d", &i);
-	srand(time(NULL));
-	system("cls");
+	system("clear");
 
+  //print arroew
+  //â†‘â†’â†â†“
 	printf("\n    ");
 	for (; n < i; n++)
 	{
-		if (ac[n] == 75)
-			printf("¢·    ");
-		else if (ac[n] == 80)
-			printf("¡ä    ");
-		else if (ac[n] == 77)
-			printf("¢¹    ");
-		else if (ac[n] == 72)
-			printf("¡â    ");
+		if (arrow[n] == RIGHT)
+			printf("â†’    ");
+		else if (arrow[n] == LEFT)
+			printf("â†    ");
+		else if (arrow[n] == UP)
+			printf("â†‘    ");
+		else if (arrow[n] == DOWN)
+			printf("â†“    ");
 
 		if ((n % 10) == 9)
 			printf("\n\n    ");
 	}
-	printf("\n");
-	n = 0;
-	gotoxy(4, 11);
-	printf("³²Àº Å¸ÀÏ: %d ", i);
+}
 
-	l = 0;
-	hThread = (HANDLE)_beginthreadex(NULL, 0, ThreadFunction, NULL, 0, (unsigned*)&dwThreadID);
+//Start Game
+int main(void) {
+	int input = 0;
 
-	//°ÔÀÓ ÇÃ·¹ÀÌ
-	while (1)
-	{
-		if (n == i)
+	while (TRUE) {
+		if (input == 1)
+			break;
+		else if (input == 2)
 			break;
 
-		c = getch();
-		c = getch();
-		if (c == ac[n])
-		{
-			n++;
-			m = n;
-			for (; m>0; m--)
-			{
-				if (m % 10 == 0)
-					gotoxy(49, (m / 10) * 2 - 1);
-				else
-					gotoxy(5 * (m % 10) - 1, 2 * (m / 10) + 1);
-				
-				printf("       ");
-			}
-		}
-		gotoxy(15, 11);
-		printf("%d ", (i-n));
+		system("clear");
+		input = menu();
 	}
-	l = 1;
-	printf("\n°ÔÀÓÀÌ ³¡³µ½À´Ï´Ù. 2ÃÊ ÈÄ Á¾·áÇÕ´Ï´Ù.\n");
-	Sleep(2000);
-
-}
-void gotoxy(int x, int y)
-{
-	COORD Pos;
-	Pos.X = x;
-	Pos.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-}
-
-unsigned int WINAPI ThreadFunction(void *arg)
-{
-	int t = 0;
-
-	while (1)
-	{
-		if (l == 1)
-			return 0;
-
-		gotoxy(18,11);
-		printf("½Ã°£: %d", t++);
-		Sleep(1000);
-		
-		if (l == 1)
-			return 0;
-	}
-
 	return 0;
 }
 
-//ÇöÀç ´Ü°è ¸ÂÃß¸é ¼ýÀÚ°¡ ¿Ã¶ó°¡°í Æ²¸®¸é ¾È ¿Ã¶ó°¨
-//ÀÏ´Ü ´©¸£¸é ¹«Á¶°Ç ¸ÂÃá ¼ö°¡ Ãâ·ÂµÊ
+//menu
+int menu(void) {
+	int input;
+	int arrow[50] = { 0 };
+	int c = 0;
 
-/*
-ÇØ¾ßÇÒ °Í
-gotoxy
-*/
+	initscr();
+	printf("1. Play 2. Exit\nSelect: ");
+	print_arrow(arrow);
+	printf("\n%d %d\n", arrow[2], arrow[4]);
+	printf("\n%d", &c);
+	scanf("%d", &input);
+
+	return input;
+}

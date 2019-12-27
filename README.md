@@ -6,7 +6,7 @@ C Project Collection
  - OS: MacOS
  - Language: C
 
-1. Arrow Game
+1. Arrow Game(Not finished)
 
 2. Minesweeper
 
