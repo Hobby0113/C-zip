@@ -5,30 +5,31 @@ void box(void)
 	int i, j;
 	for (i = 0; i < XY; i++)
 	{
-		printf("¡á");
+		printf("â– â– ");
 		for (j = 0; j < XY - 2; j++)
 		{
 			if (i == 0 || i == XY - 1)
-				printf("¡á");
+				printf("â– ");
 			else
 				printf("  ");
 		}
-		printf("¡á%d\n", i);
+		printf("â– %d\n", i);
 	}
-	printf("¿­");
+	printf("â– ");
 	for (i = 0; i < XY - 2; i++)
-		printf("%2d", i + 1);
+		printf("%c", 97 + i);
 	gotoxy((XY * 2) + 1, 1);
-	printf("Çà");
+	printf("â– ");
 	gotoxy((XY * 2) + 1, XY);
 	printf("  ");
 }
+
 int set_tile(TILE (*T)[SIZE])
 {
 	int i, j, k,count=0;
 	TILE *TP = NULL;
 
-	//¼ýÀÚ, open, Å¸ÀÏ Æ÷ÀÎÅÍ ÃÊ±âÈ­
+	//ï¿½ï¿½ï¿½ï¿½, open, Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
 	for (i = 0; i < SIZE; i++)
 		for (j = 0; j < SIZE; j++)
 		{
@@ -56,16 +57,16 @@ void print_tile(TILE (*T)[SIZE])
 		for (j = 0; j < SIZE; j++)
 		{
 			TP = T[i] + j;
-			if (TP->i == 0) printf("¡Û");
-			if (TP->i == 1) printf("¨ç");
-			if (TP->i == 2) printf("¨è");
-			if (TP->i == 3) printf("¨é");
-			if (TP->i == 4) printf("¨ê");
-			if (TP->i == 5) printf("¨ë");
-			if (TP->i == 6) printf("¨ì");
-			if (TP->i == 7) printf("¨í");
-			if (TP->i == 8) printf("¨î");
-			if (TP->i == 9) printf("¡Ú");
+			if (TP->i == 0) printf("ï¿½ï¿½");
+			if (TP->i == 1) printf("ï¿½ï¿½");
+			if (TP->i == 2) printf("ï¿½ï¿½");
+			if (TP->i == 3) printf("ï¿½ï¿½");
+			if (TP->i == 4) printf("ï¿½ï¿½");
+			if (TP->i == 5) printf("ï¿½ï¿½");
+			if (TP->i == 6) printf("ï¿½ï¿½");
+			if (TP->i == 7) printf("ï¿½ï¿½");
+			if (TP->i == 8) printf("ï¿½ï¿½");
+			if (TP->i == 9) printf("ï¿½ï¿½");
 		}
 	}
 }
@@ -103,19 +104,19 @@ void set_tileP(TILE (*T)[SIZE])
 			TP = T[i] + j;
 			if (i != 0)
 			{
-				if (j != 0)  TP->NT[0] = T[(i - 1)]+(j - 1); //¨ç
-				TP->NT[1] = T[(i - 1)] + j; //¨è
-				if (j != SIZE - 1)  TP->NT[2] = T[(i - 1)] + (j + 1); //¨é
+				if (j != 0)  TP->NT[0] = T[(i - 1)]+(j - 1); //ï¿½ï¿½
+				TP->NT[1] = T[(i - 1)] + j; //ï¿½ï¿½
+				if (j != SIZE - 1)  TP->NT[2] = T[(i - 1)] + (j + 1); //ï¿½ï¿½
 			}
 			if (j != 0)
-				TP->NT[3] = T[i] + (j - 1); //¨ê
+				TP->NT[3] = T[i] + (j - 1); //ï¿½ï¿½
 			if (j != SIZE-1)
-				TP->NT[4] = T[i] + (j + 1); //¨ë
+				TP->NT[4] = T[i] + (j + 1); //ï¿½ï¿½
 			if (i != SIZE - 1)
 			{
-				if (j != 0)  TP->NT[5] = T[(i + 1)] + (j - 1); //¨ì
-				TP->NT[6] = T[(i + 1)] + j; //¨í
-				if (j != SIZE - 1)  TP->NT[7] = T[(i + 1)] + (j + 1); //¨î
+				if (j != 0)  TP->NT[5] = T[(i + 1)] + (j - 1); //ï¿½ï¿½
+				TP->NT[6] = T[(i + 1)] + j; //ï¿½ï¿½
+				if (j != SIZE - 1)  TP->NT[7] = T[(i + 1)] + (j + 1); //ï¿½ï¿½
 			}
 		}
 }
@@ -143,16 +144,16 @@ void print_one_tile(TILE *T, int i, int j)
 {
 	gotoxy(3 + j * 2, 2 + i);
 
-	if (T->i == 0) printf("¡Û");
-	if (T->i == 1) printf("¨ç");
-	if (T->i == 2) printf("¨è");
-	if (T->i == 3) printf("¨é");
-	if (T->i == 4) printf("¨ê");
-	if (T->i == 5) printf("¨ë");
-	if (T->i == 6) printf("¨ì");
-	if (T->i == 7) printf("¨í");
-	if (T->i == 8) printf("¨î");
-	if (T->i == 9) printf("¡Ú");
+	if (T->i == 0) printf("ï¿½ï¿½");
+	if (T->i == 1) printf("ï¿½ï¿½");
+	if (T->i == 2) printf("ï¿½ï¿½");
+	if (T->i == 3) printf("ï¿½ï¿½");
+	if (T->i == 4) printf("ï¿½ï¿½");
+	if (T->i == 5) printf("ï¿½ï¿½");
+	if (T->i == 6) printf("ï¿½ï¿½");
+	if (T->i == 7) printf("ï¿½ï¿½");
+	if (T->i == 8) printf("ï¿½ï¿½");
+	if (T->i == 9) printf("ï¿½ï¿½");
 }
 void print_cover(void)
 {
@@ -161,6 +162,6 @@ void print_cover(void)
 	{
 		gotoxy(3, 2 + i);
 		for (j = 0; j < SIZE; j++)
-			 printf("¡Ü");
+			 printf("ï¿½ï¿½");
 	}
 }

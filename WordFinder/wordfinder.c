@@ -52,9 +52,9 @@ int main(void)
 	}
 
 
-	
+
 	fclose(F);
-	printf("wordfinder를 종료합니다.");
+	printf("wordfinder를 종료합니다.\n");
 	return 0;
 }
 
@@ -89,14 +89,14 @@ void input(int n,char search[], char word[], int k, int *front, int *back)
 	}
 	i = e-s+1;
 
-	for(s;s<=e;s++)
+	for(;s<=e;s++)
 	{
 		if(*front == 0)
 			word[s] = word2[s];
 		else
 			word[s-3] = word2[s];
 	}
-	
+
 	word[i]='\0';
 
 	for(i=0;i<strlen(word2);i++) {

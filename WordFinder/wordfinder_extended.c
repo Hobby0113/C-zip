@@ -37,7 +37,7 @@ int main(void)
 	while(1)
 	{
 		n = UI(j);
-		
+
 		//1번 기능
 		if(n==1)
 		{
@@ -98,7 +98,7 @@ int main(void)
 			l=0;
 */
 			printf("\ncurrent word: %s", word2);
-		
+
 		//3번기능
 		} else if (n == 3) {
 			printf("select command is : 3. Display alphabet word (in 1's result)\n");
@@ -109,7 +109,7 @@ int main(void)
 			{
 				if( alpha[0] == arr[a].sword[0] )
 					l = 1;
-				
+
 				if( arr[a].sword[0]<91 )
 				{
 					if ( alpha[0] == (arr[a].sword[0]+32))
@@ -129,7 +129,7 @@ int main(void)
 						printf("%d", arr[a].line[l]);
 					}
 				}
-				
+
 				if(arr[a].sword[0]=='\0')
 				{
 					printf("\ncureent word: %s", word2);
@@ -139,7 +139,7 @@ int main(void)
 				a++;
 				l = 0;
 			}
-		
+
 		//4번 기능
 		} else if (n == 4) {
 			break;
@@ -147,9 +147,9 @@ int main(void)
 	}
 
 
-	
+
 	fclose(F);
-	printf("wordfinder를 종료합니다.");
+	printf("wordfinder를 종료합니다.\n");
 	return 0;
 }
 
@@ -183,14 +183,14 @@ void input(char word2[],char search[], char word[], int k, int *front, int *back
 	}
 	i = e-s+1;
 
-	for(s;s<=e;s++)
+	for(;s<=e;s++)
 	{
 		if(*front == 0)
 			word[s] = word2[s];
 		else
 			word[s-3] = word2[s];
 	}
-	
+
 	word[i]='\0';
 
 	for(i=0;i<strlen(word2);i++) {
@@ -264,7 +264,7 @@ void structcompare(char str[], LIST arr[], int a, int b, int l)
 	}
 
 	if(l!=0){
-	for(i = 0;arr[i].sword[0]!='\0';i+0){
+	for(i = 0;arr[i].sword[0]!='\0';){
 		if(strcmp(str,arr[i].sword)==0){
 			while(1){
 				if(arr[i].line[j] == 0){
@@ -291,16 +291,16 @@ void reset(LIST arr[], int a, int b)
 {
 	int i,j;
 
-	for(i=0;arr[i].sword[0]!='\0';i+0)
+	for(i=0;arr[i].sword[0]!='\0';)
 	{
 		for(j=0;j<strlen(arr[i].sword);j++)
 		{
 			arr[i].sword[j] = '\0';
 		}
-		
+
 		for(j=0;arr[i].line[j]!=0;j++)
 		{
-			arr[i].line[j] = 0;			
+			arr[i].line[j] = 0;
 		}
 		i++;
 	}
@@ -309,7 +309,7 @@ void reset(LIST arr[], int a, int b)
 int struct_array(LIST arr[], int a, int b, int n)
 {
 	int i, j = 0, min = 127, temp=0;
-	
+
 	//가장 앞을 찾는다
 	for(i=0;arr[i].sword[0] != '\0'; i++)
 	{
@@ -350,6 +350,6 @@ int struct_array(LIST arr[], int a, int b, int n)
 			}
 
 		}
-	
 	struct_array(arr,a,b,min);
+	return 0;
 }

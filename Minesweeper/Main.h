@@ -1,8 +1,9 @@
 #pragma once
 #include<stdio.h>
 #include<stdlib.h>
-#include<Windows.h>
+//#include<Windows.h>
 #include<time.h>
+#include <unistd.h>
 
 #define XY 22
 #define SIZE (XY-2)
@@ -10,14 +11,14 @@
 #define MINENUM (XY)
 #define UI_Y (XY+2)
 
-// ¨Û¨ç¨è   Å¸ÀÏ Æ÷ÀÎÅÍ ¹è¿­ ±ÔÄ¢ Á¤ÀÇ
-// ¨é  ¨ê
-// ¨ë¨ì¨í
+// ï¿½Û¨ï¿½ï¿½ï¿½   Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½Ä¢ ï¿½ï¿½ï¿½ï¿½
+// ï¿½ï¿½  ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 typedef struct{
 	struct TILE* NT[8];
 	int i;
-	char open; //1 ¿­¸² 0 ´ÝÈû
+	char open; //1 ï¿½ï¿½ï¿½ï¿½ 0 ï¿½ï¿½ï¿½ï¿½
 } TILE;
 
 //Setting.c

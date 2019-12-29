@@ -1,10 +1,12 @@
 #include"Main.h"
 
+//start to (1,1)
 void gotoxy(int x, int y)
 {
-	COORD Pos = { x - 1,y - 1 };
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
+    printf("\033[%d;%df", y, x);
+    fflush(stdout);
 }
+
 int Random(int x)
 {
 	int i;
@@ -27,7 +29,7 @@ int get_num(void)
 
 			if (c<'0' || c>'9')
 			{
-				//printf("´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.\n");
+				//printf("ï¿½Ù½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.\n");
 
 				check = 0;
 				break;
@@ -80,16 +82,16 @@ void play(TILE (*T)[SIZE],int m)
 			break;
 	}
 	gotoxy(1, UI_Y + 5);
-	printf("Á¤¸» ¼ö°íÇÏ¼Ì½À´Ï´Ù!");
-	Sleep(3000);
+	printf("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½!");
+	usleep(3000);
 }
 void UI(int m,int t)
 {
 	gotoxy(1, UI_Y);
-	printf("ÁÂÇ¥ ÀÔ·Â\n");//13
-	printf("Çà:     ¿­:     \n");//14
-	printf("³²Àº Áö·Ú: %2d°³\n", m);//15
-	printf("³²Àº Å¸ÀÏ: %2d°³", t);//16
+	printf("ï¿½ï¿½Ç¥ ï¿½Ô·ï¿½\n");//13
+	printf("ï¿½ï¿½:     ï¿½ï¿½:     \n");//14
+	printf("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: %2dï¿½ï¿½\n", m);//15
+	printf("ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½: %2dï¿½ï¿½", t);//16
 }
 int open_tile(TILE *T,int x, int y)
 {
@@ -122,8 +124,8 @@ int is_Open(TILE (*T)[SIZE], int x, int y)
 void overlap(void)
 {
 	gotoxy(1, UI_Y + 4);
-	printf("ÀÌ¹Ì ¿­¸° Å¸ÀÏÀÔ´Ï´Ù.");
-	Sleep(2000);
+	printf("ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
+	usleep(2000);
 	gotoxy(1, UI_Y + 4);
 	printf("                     ");
 }
@@ -183,5 +185,5 @@ void testF(TILE *T, int x, int y)
 void is_Mine(void)
 {
 	gotoxy(1, UI_Y+5);
-	printf("Æã!! Áö·ÚÀÔ´Ï´Ù!");
+	printf("ï¿½ï¿½!! ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½!");
 }
