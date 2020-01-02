@@ -32,12 +32,17 @@ int main(void)
 	int a=0,q=0,m=0;
 	system("clear");
 	UI();
-	
+sleep(1);	
 	a = pthread_create(&elevator[0],NULL,th_E1,(void *)&q);
+sleep(1);
     a = pthread_create(&elevator[1],NULL,th_E2,(void *)&q);
+sleep(1);
     a = pthread_create(&elevator[2],NULL,th_E3,(void *)&q);
+sleep(1);
     a = pthread_create(&elevator[3],NULL,th_E4,(void *)&q);
+sleep(1);
     a = pthread_create(&elevator[4],NULL,th_E5,(void *)&q);
+sleep(1);
     a = pthread_create(&elevator[5],NULL,th_E6,(void *)&q);
 
 	while(1)
